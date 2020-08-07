@@ -1,14 +1,3 @@
-# Recognise Faces using some classification algorithm - like Logistic, KNN, SVM etc.
-
-
-# 1. load the training data (numpy arrays of all the persons)
-		# x- values are stored in the numpy arrays
-		# y-values we need to assign for each person
-# 2. Read a video stream using opencv
-# 3. extract faces out of it
-# 4. use knn to find the prediction of face (int)
-# 5. map the predicted id to name of the user 
-# 6. Display the predictions on the screen - bounding box and name
 
 import cv2
 import numpy as np 
@@ -42,7 +31,7 @@ def knn(train, test, k=5):
 ################################
 
 
-#Init Camera
+#Initialise Camera
 cap = cv2.VideoCapture(0)
 
 # Face Detection
@@ -54,7 +43,7 @@ dataset_path = './data/'
 face_data = [] 
 labels = []
 
-class_id = 0 # Labels for the given file
+class_id = 0  #Labels for the given file
 names = {} #Mapping btw id - name
 
 
@@ -95,7 +84,7 @@ while True:
 	for face in faces:
 		x,y,w,h = face
 
-		#Get the face ROI
+		#Get the face
 		offset = 10
 		face_section = frame[y-offset:y+h+offset,x-offset:x+w+offset]
 		face_section = cv2.resize(face_section,(100,100))
